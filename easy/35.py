@@ -7,10 +7,11 @@ class Solution:
         for ind, num in enumerate(nums):
             if num == target:
                 index = ind
-                return index
+                break
             elif num < target:
                 index = ind
                 continue
             elif num > target:
                 index = ind
-                return index
+                break
+        return index
