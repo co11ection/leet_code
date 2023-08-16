@@ -1,4 +1,5 @@
-def longestCommonPrefix(strs: list[str]) -> str:
+class Solution:
+    def longestCommonPrefix(self, strs: list[str]) -> str:
         if not strs: 
             return ""
 
@@ -13,6 +14,3 @@ def longestCommonPrefix(strs: list[str]) -> str:
                 break  
 
         return output
-
-strs = ["ab", "a"]
-print(longestCommonPrefix(strs))
