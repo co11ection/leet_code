@@ -1,18 +1,16 @@
-def longestCommonPrefix(strs: list[str]) -> str:
-        if not strs: 
-            return ""
+nums = [1, 2, 4]
+target = 5
+index = 0
+for ind, num in enumerate(nums):
+    if num < target:
+        if nums[-1] < target:
+            index = ind + 1
+        else: 
+            index = ind
+            continue
+    elif num == target:
+        index = ind
+    elif num > target:
+        index = ind
 
-        min_len = min(len(word) for word in strs)  
-        output = ""
-
-        for i in range(min_len):
-            char = strs[0][i]  
-            if all(word[i] == char for word in strs):
-                output += char  
-            else:
-                break  
-
-        return output
-
-strs = ["ab", "a"]
-print(longestCommonPrefix(strs))
+print(index)
