@@ -1,24 +1,31 @@
-def myAtoi(s: str):
-    s = s.strip()
-    if not s:
-        return 0
-    sign =  1
-    if s[0]  in '+-':
-        if s[0] == '-':
-            sign = -1
-        s = s[1:]
+def letterCombination(digits: str):
+    letters = {
+        "1": "",
+        "2": "abc",
+        "3": "def",
+        "4": "ghi",
+        "5": "jkl",
+        "6": "mno",
+        "7": "pqrs",
+        "8": "tuv",
+        "9": "wxyz"
+    }
+    if not digits:
+        return []
+    result = []
     
-    result = 0
-    for element in s:
-        if element.isdigit():
-            result =  result * 10 + int(element)
-        else:
-            break
+    def backtrack(index, current_combination):
+        if index == len(digits):
+            result.append(current_combination)
+            return
         
-    result *= sign
-    INT_MAX = 2**31 - 1
-    INT_MIN = -2**31
-    return max(min(result, INT_MAX), INT_MIN)
-
-s = "   -42"
-print(myAtoi(s))
+        digit = digits[index]
+        possible_letters = letters[digit]
+        
+        for letter in possible_letters:
+            backtrack(index + 1, current_combination + letter)
+    backtrack(0, "")
+    return result
+        
+digits = "34"
+print(letterCombination(digits))
