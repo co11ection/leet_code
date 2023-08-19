@@ -1,16 +1,14 @@
-matrix = [[1,2],[2,2]]
-def isTeoplistMatrix(matrix):
+matrix = [[1,2,3],[4,5,6],[7,8,9]]
+def transpose(matrix):
     rows = len(matrix)
     columbs = len(matrix[0])
     
+    transpose_matrix = [[0] * rows for i in range(columbs)]
+    
     for i in range(rows):
         for j in range(columbs):
-            if i > 0 and j > 0 and matrix[i][j] != matrix[i - 1][j - 1]:
-                return False
-    return True
+            transpose_matrix[j][i] = matrix[i][j] 
+            
+    return transpose_matrix
 
-
-print(isTeoplistMatrix(matrix))
-    
-        
-    
+print(transpose(matrix))
