@@ -1,31 +1,23 @@
-def letterCombination(digits: str):
-    letters = {
-        "1": "",
-        "2": "abc",
-        "3": "def",
-        "4": "ghi",
-        "5": "jkl",
-        "6": "mno",
-        "7": "pqrs",
-        "8": "tuv",
-        "9": "wxyz"
-    }
-    if not digits:
-        return []
-    result = []
-    
-    def backtrack(index, current_combination):
-        if index == len(digits):
-            result.append(current_combination)
-            return
+matrix = [[1,2,3],[4,5,6],[7,8,9]]
+def spiralOrder(matrix: list[list[int]]):
+    answer = []
+    while matrix:
+        answer += matrix[0]
+        matrix.pop(0)
         
-        digit = digits[index]
-        possible_letters = letters[digit]
+        if matrix:
+            for element in matrix:
+                if element:
+                    answer.append(element.pop())
         
-        for letter in possible_letters:
-            backtrack(index + 1, current_combination + letter)
-    backtrack(0, "")
-    return result
+        if matrix and matrix[-1]:
+            answer += matrix[-1][::-1]
+            matrix.pop()
         
-digits = "34"
-print(letterCombination(digits))
+        # if matrix:
+        #     for element in matrix[::-1]:
+        #         if element:
+        #             answer.append(element.pop(0))
+    return answer
+
+print(spiralOrder(matrix))
