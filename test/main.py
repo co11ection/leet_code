@@ -1,23 +1,16 @@
-matrix = [[1,2,3],[4,5,6],[7,8,9]]
-def spiralOrder(matrix: list[list[int]]):
-    answer = []
-    while matrix:
-        answer += matrix[0]
-        matrix.pop(0)
-        
-        if matrix:
-            for element in matrix:
-                if element:
-                    answer.append(element.pop())
-        
-        if matrix and matrix[-1]:
-            answer += matrix[-1][::-1]
-            matrix.pop()
-        
-        # if matrix:
-        #     for element in matrix[::-1]:
-        #         if element:
-        #             answer.append(element.pop(0))
-    return answer
+matrix = [[1,2],[2,2]]
+def isTeoplistMatrix(matrix):
+    rows = len(matrix)
+    columbs = len(matrix[0])
+    
+    for i in range(rows):
+        for j in range(columbs):
+            if i > 0 and j > 0 and matrix[i][j] != matrix[i - 1][j - 1]:
+                return False
+    return True
 
-print(spiralOrder(matrix))
+
+print(isTeoplistMatrix(matrix))
+    
+        
+    
