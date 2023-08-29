@@ -1,32 +1,20 @@
-n = 3
-def generateMatrix(n):
-    matrix = [[0] * n for i in range(n)]
-    num = 1
-    left, right, top, botton = 0, n - 1, 0, n - 1
-    while num <= n*n:
-        for index in range(left, right + 1):
-            matrix[top][index] = num
-            num += 1
-        top += 1
-        
-        for index in range(top, botton + 1):
-            matrix[index][right] = num
-            num += 1
-        right -= 1
-        
-        for index in range(right, left-1, -1):
-            matrix[botton][index] = num
-            num += 1
-        botton -= 1
-        
-        for index in range(botton, top-1, -1):
-            matrix[index][left] = num
-            num += 1
-        left += 1
-    
-    return matrix
-    
-gn = generateMatrix(5)
+matrix = [[3,7,8],[9,11,13],[15,16,17]]
 
-for row in gn:
-    print(row)       
+def luckyNumber(matrix):
+    row, columb = len(matrix), len(matrix[0])
+    s = set()
+    lucky_nums = []
+    for index_i in range(row):
+        s.add(min(matrix[index_i]))
+    for element in zip(*matrix):
+        t = max(element)
+        if t in s:
+            lucky_nums.append(t)
+    return lucky_nums
+        
+    
+    
+
+            
+
+        
